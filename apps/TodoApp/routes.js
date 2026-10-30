@@ -1,5 +1,8 @@
-import TodoController from "./controllers/TodoController.js";
-import express from "express";
+//import TodoController from "./controllers/TodoController.js";
+//import express from "express";
+
+const express = require("express");
+const TodoController = require("./controllers/TodoController.js");
 
 const router = express.Router();
 
@@ -13,4 +16,4 @@ router.get("/:id/edit", TodoController.edit);
 router.post("/:id/update", TodoController.update);
 router.get("/:id", TodoController.show);
 
-export default router;
+module.exports = router;

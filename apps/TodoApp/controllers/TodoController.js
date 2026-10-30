@@ -1,4 +1,6 @@
-import TodoModel from "../models/TodoModel.js";
+//import TodoModel from "../models/TodoModel.js";
+
+const TodoModel = require("../models/TodoModel.js");
 
 class TodoController {
     async index(req, res) {
@@ -94,4 +96,4 @@ class TodoController {
     }
 }
 
-export default new TodoController();
+module.exports = new TodoController();

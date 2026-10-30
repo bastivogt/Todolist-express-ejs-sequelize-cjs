@@ -1,21 +1,22 @@
-import Todo from "./apps/TodoApp/models/TodoModel.js";
+//import TodoModel from "./apps/TodoApp/models/TodoModel.js";
+const TodoModel = require("./apps/TodoApp/models/TodoModel.js");
 
 const todos = [
     {
         title: "First Todo",
         text: "This is the first todo item",
-        completed: false
+        completed: false,
     },
     {
         title: "Second Todo",
         text: "This is the second todo item",
-        completed: true
-    }
+        completed: true,
+    },
 ];
 
 const seedTodos = async () => {
     try {
-        await Todo.bulkCreate(todos);
+        await TodoModel.bulkCreate(todos);
         console.log("Database seeded successfully");
     } catch (err) {
         console.error("Error seeding database:", err);

@@ -1,21 +1,17 @@
-import express from "express";
-import path from "path";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
-
-import todoRoutes from "./apps/TodoApp/routes.js";
+const express = require("express");
+const path = require("path");
 
 const app = express();
 const host = "http://localhost";
 const port = 8042;
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = dirname(__filename);
 
 // static folder for serving public files
 app.use(express.static(path.join(__dirname, "public")));
 
-// body parser middleware
+// // body parser middleware
 app.use(express.urlencoded({ extended: true }));
 // app.use(express.json());
 
@@ -23,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+const todoRoutes = require("./apps/TodoApp/routes.js");
 app.use("/todos", todoRoutes);
 
 // handle 404 errors

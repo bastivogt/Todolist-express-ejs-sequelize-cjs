@@ -1,5 +1,8 @@
-import db from "../../../db.js";
-import { DataTypes } from "sequelize";
+// import db from "../../../db.js";
+// import { DataTypes } from "sequelize";
+
+const db = require("../../../db.js");
+const { DataTypes } = require("sequelize");
 
 const Todo = db.define("Todo", {
     title: {
@@ -16,4 +19,4 @@ const Todo = db.define("Todo", {
     },
 });
 
-export default Todo;
+module.exports = Todo;
