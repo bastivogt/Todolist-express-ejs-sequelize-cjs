@@ -1,5 +1,5 @@
 <%- include('../includes/header') %>
-    <h1><%= title %></h1>
+    <h1><%= title %><%= todo.completed ? ' [x]' : ' [ ]' %></h1>
     <p><%= todo.text %></p>
     <p>
         <div>Created at: <%= todo.createdAt %></div>

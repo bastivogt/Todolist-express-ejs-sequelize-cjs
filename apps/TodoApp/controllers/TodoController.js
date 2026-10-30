@@ -27,15 +27,16 @@ class TodoController {
     }
 
     async store(req, res) {
-        const { title, text } = req.body;
+        const { title, text, completed } = req.body;
+        console.log("COMPLETED:", completed);
         if (!title || !text) {
             return res.status(400).render("TodoApp/create", { 
                 title: "Create Todo", 
                 error: "Title and text are required",
-                todo: { title, text }
+                todo: { title, text, completed: completed === 'on' }
             });
         }
-        const todo = await TodoModel.create({ title, text });
+        const todo = await TodoModel.create({ title, text, completed: completed === 'on' });
         res.redirect("/todos");
     }
 
@@ -74,7 +75,7 @@ class TodoController {
     
     async update(req, res) {
         const id = req.params.id;
-        const { title, text } = req.body;
+        const { title, text, completed } = req.body;
         const todo = await TodoModel.findByPk(id);
         if (!todo) {
             return res.status(404).send("Todo not found");
@@ -83,10 +84,10 @@ class TodoController {
             return res.status(400).render("TodoApp/edit", { 
                 title: `Edit ${todo.title}`, 
                 error: "Title and text are required",
-                todo: todo
+                todo: { id: id, title, text, completed: completed === 'on' }
             });
         }
-        await todo.update({ title, text });
+        await todo.update({ title, text, completed: completed === 'on' });
         res.redirect("/todos");
     }
 }

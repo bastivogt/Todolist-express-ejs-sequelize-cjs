@@ -12,6 +12,10 @@
             <label for="text">Text:</label>
             <textarea id="text" name="text" required><%= error ? todo.text : '' %></textarea>
         </div>
+        <div>
+            <label for="completed">Completed:</label>
+            <input type="checkbox" id="completed" name="completed" <%= error && todo.completed ? 'checked' : '' %>>
+        </div>
         <button type="submit">Create Todo</button>
     </form>
 
