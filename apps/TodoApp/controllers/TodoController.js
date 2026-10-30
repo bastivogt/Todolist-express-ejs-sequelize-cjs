@@ -23,13 +23,17 @@ class TodoController {
 
     create(req, res) {
         console.log("Rendering create todo page");
-        res.render("TodoApp/create", { title: "Create Todo" });
+        res.render("TodoApp/create", { title: "Create Todo", error: null, todo: null });
     }
 
     async store(req, res) {
         const { title, text } = req.body;
         if (!title || !text) {
-            return res.redirect("/todos/create");
+            return res.status(400).render("TodoApp/create", { 
+                title: "Create Todo", 
+                error: "Title and text are required",
+                todo: { title, text }
+            });
         }
         const todo = await TodoModel.create({ title, text });
         res.redirect("/todos");
@@ -61,7 +65,11 @@ class TodoController {
         if (!todo) {
             return res.status(404).send("Todo not found");
         }
-        res.render("TodoApp/edit", { title: `Edit ${todo.title}`, todo: todo });
+        res.render("TodoApp/edit", { 
+            title: `Edit ${todo.title}`, 
+            todo: todo, 
+            error: null
+        });
     }
     
     async update(req, res) {
@@ -72,7 +80,11 @@ class TodoController {
             return res.status(404).send("Todo not found");
         }
         if (!title || !text) {
-            return res.redirect(`/todos/${id}/edit`);
+            return res.status(400).render("TodoApp/edit", { 
+                title: `Edit ${todo.title}`, 
+                error: "Title and text are required",
+                todo: todo
+            });
         }
         await todo.update({ title, text });
         res.redirect("/todos");
