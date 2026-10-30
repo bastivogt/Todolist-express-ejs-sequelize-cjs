@@ -4,14 +4,7 @@
         <p style="color: red;"><%= error %></p>
     <% } %>
     <form action="/todos/<%= todo.id %>/update" method="POST" novalidate>
-        <div>
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" value="<%= error ? todo.title : todo.title %>" required>
-        </div>
-        <div>
-            <label for="text">Text:</label>
-            <textarea id="text" name="text" required><%= error ? todo.text : todo.text %></textarea>
-        </div>
+        <%- include('includes/_todoForm', { error: error, todo: todo }) %>
         <button type="submit">Update Todo</button>
     </form>
 
