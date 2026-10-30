@@ -13,6 +13,4 @@ router.get("/:id/edit", TodoController.edit);
 router.post("/:id/update", TodoController.update);
 router.get("/:id", TodoController.show);
 
-
-
 export default router;

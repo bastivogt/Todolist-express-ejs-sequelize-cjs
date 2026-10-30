@@ -4,16 +4,16 @@ import { DataTypes } from "sequelize";
 const Todo = db.define("Todo", {
     title: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
     },
     text: {
         type: DataTypes.TEXT,
-        allowNull: false
+        allowNull: false,
     },
     completed: {
         type: DataTypes.BOOLEAN,
-        defaultValue: false
-    }
+        defaultValue: false,
+    },
 });
 
 export default Todo;
