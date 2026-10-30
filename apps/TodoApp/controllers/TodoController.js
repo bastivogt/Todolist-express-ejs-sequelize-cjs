@@ -92,7 +92,7 @@ class TodoController {
             });
         }
         await todo.update({ title, text, completed: completed === "on" });
-        res.redirect("/todos");
+        res.redirect(`/todos/${id}`);
     }
 }
 
