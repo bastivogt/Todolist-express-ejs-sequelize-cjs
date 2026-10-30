@@ -11,7 +11,7 @@ const port = 8042;
 // static folder for serving public files
 app.use(express.static(path.join(__dirname, "public")));
 
-// // body parser middleware
+// body parser middleware
 app.use(express.urlencoded({ extended: true }));
 // app.use(express.json());
 

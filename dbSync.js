@@ -1,7 +1,7 @@
 const db = require("./db.js");
 
 // import the models
-const Todo = require("./apps/TodoApp/models/TodoModel.js");
+const TodoModel = require("./apps/TodoApp/models/TodoModel.js");
 
 db.sync()
     .then(() => {
