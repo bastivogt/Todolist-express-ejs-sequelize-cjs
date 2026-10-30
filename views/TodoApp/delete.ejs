@@ -1,4 +1,4 @@
-<%- include('../includes/header') %>
+<%- include('../includes/_header') %>
     <h1 style="color: red;"><%= title %></h1>
     <p style="color: red;">Are you sure you want to delete the todo: "<%= todo.title %>"?</p>
     <form action="/todos/destroy" method="post">
@@ -9,4 +9,4 @@
         <a href="/todos">Back to Todos</a>
     </p>
 
-<%- include('../includes/footer') %>  
+<%- include('../includes/_footer') %>  

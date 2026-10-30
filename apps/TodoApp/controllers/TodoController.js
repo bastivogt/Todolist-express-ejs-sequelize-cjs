@@ -8,7 +8,6 @@ class TodoController {
                 order: [["createdAt", "DESC"]] 
             }
         );
-        console.log(todos);
         res.render("TodoApp/index", { title: title, todos: todos });
     }
 
@@ -22,13 +21,11 @@ class TodoController {
     }
 
     create(req, res) {
-        console.log("Rendering create todo page");
         res.render("TodoApp/create", { title: "Create Todo", error: null, todo: null });
     }
 
     async store(req, res) {
         const { title, text, completed } = req.body;
-        console.log("COMPLETED:", completed);
         if (!title || !text) {
             return res.status(400).render("TodoApp/create", { 
                 title: "Create Todo", 
