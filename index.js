@@ -1,7 +1,9 @@
 const express = require("express");
 const path = require("path");
-
 const app = express();
+
+const todoRoutes = require("./apps/TodoApp/routes.js");
+
 const host = "http://localhost";
 const port = 8042;
 
@@ -19,7 +21,6 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-const todoRoutes = require("./apps/TodoApp/routes.js");
 app.use("/todos", todoRoutes);
 
 // handle 404 errors
